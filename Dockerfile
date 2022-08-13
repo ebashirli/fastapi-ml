@@ -9,12 +9,13 @@ RUN apt-get -y update  && apt-get install -y \
   build-essential \
 && rm -rf /var/lib/apt/lists/*
 
-# RUN pip install --upgrade setuptools
-# RUN pip install \
-#     cython==0.29.24 \
-#     numpy==1.21.1 \
-#     pandas==1.3.1 \
-#     pystan==2.19.1.1
+RUN python -m pip install --upgrade pip
+RUN pip install --upgrade setuptools
+RUN pip install \
+    cython==0.29.24 \
+    numpy==1.21.1 \
+    pandas==1.3.1 
+    # pystan==2.19.1.1
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
